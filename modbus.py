@@ -11,29 +11,6 @@ COMMANDS = [
     "write_single_register",
 ]
 
-COMMAND_DICT = {
-
-# Example usage:
-print("Read Coils:", emulator.read_coils(0, 5))
-print("Read Discrete Inputs:", emulator.read_discrete_inputs(10, 5))
-print("Read Holding Registers:", emulator.read_holding_registers(20, 3))
-print("Read Input Registers:", emulator.read_input_registers(30, 2))
-print("Write Single Coil Result:", emulator.write_single_coil(5, True))
-print("Write Single Register Result:", emulator.write_single_register(15, 123))
-print(
-    "Write Multiple Coils Result:",
-    emulator.write_multiple_coils(10, [True, False, True]),
-)
-print(
-    "Write Multiple Registers Result:",
-    emulator.write_multiple_registers(25, [456, 789]),
-)
-print("Mask Write Register Result:", emulator.mask_write_register(5, 0xF0F0, 0x0F0F))
-print(
-    "Read/Write Multiple Registers Result:",
-    emulator.readwrite_registers(40, 2, 50, [111, 222]),
-)
-
 
 class ModbusEmulator:
     def __init__(self):
@@ -98,26 +75,39 @@ class ModbusEmulator:
         return read_values if write_result else None
 
 
-# Testing the Modbus Emulator
+# # Testing the Modbus Emulator
 emulator = ModbusEmulator()
 
-# Example usage:
-print("Read Coils:", emulator.read_coils(0, 5))
-print("Read Discrete Inputs:", emulator.read_discrete_inputs(10, 5))
-print("Read Holding Registers:", emulator.read_holding_registers(20, 3))
-print("Read Input Registers:", emulator.read_input_registers(30, 2))
-print("Write Single Coil Result:", emulator.write_single_coil(5, True))
-print("Write Single Register Result:", emulator.write_single_register(15, 123))
-print(
-    "Write Multiple Coils Result:",
-    emulator.write_multiple_coils(10, [True, False, True]),
-)
-print(
-    "Write Multiple Registers Result:",
-    emulator.write_multiple_registers(25, [456, 789]),
-)
-print("Mask Write Register Result:", emulator.mask_write_register(5, 0xF0F0, 0x0F0F))
-print(
-    "Read/Write Multiple Registers Result:",
-    emulator.readwrite_registers(40, 2, 50, [111, 222]),
-)
+COMMAND_DICT = output_dict = {
+    "read_coils": f"Read Coils: {emulator.read_coils(0, 5)}",
+    "read_discrete_inputs": f"Read Discrete Inputs: {emulator.read_discrete_inputs(10, 5)}",
+    "read_holding_registers": f"Read Holding Registers: {emulator.read_holding_registers(20, 3)}",
+    "read_input_registers": f"Read Input Registers: {emulator.read_input_registers(30, 2)}",
+    "write_single_coil": f"Write Single Coil Result: {emulator.write_single_coil(5, True)}",
+    "write_single_register": f"Write Single Register Result: {emulator.write_single_register(15, 123)}",
+    "write_multiple_coils": f"Write Multiple Coils Result: {emulator.write_multiple_coils(10, [True, False, True])}",
+    "write_multiple_registers": f"Write Multiple Registers Result: {emulator.write_multiple_registers(25, [456, 789])}",
+    "mask_write_register": f"Mask Write Register Result: {emulator.mask_write_register(5, 0xF0F0, 0x0F0F)}",
+    "readwrite_registers": f"Read/Write Multiple Registers Result: {emulator.readwrite_registers(40, 2, 50, [111, 222])}",
+}
+
+# # Example usage:
+# print("Read Coils:", emulator.read_coils(0, 5))
+# print("Read Discrete Inputs:", emulator.read_discrete_inputs(10, 5))
+# print("Read Holding Registers:", emulator.read_holding_registers(20, 3))
+# print("Read Input Registers:", emulator.read_input_registers(30, 2))
+# print("Write Single Coil Result:", emulator.write_single_coil(5, True))
+# print("Write Single Register Result:", emulator.write_single_register(15, 123))
+# print(
+#     "Write Multiple Coils Result:",
+#     emulator.write_multiple_coils(10, [True, False, True]),
+# )
+# print(
+#     "Write Multiple Registers Result:",
+#     emulator.write_multiple_registers(25, [456, 789]),
+# )
+# print("Mask Write Register Result:", emulator.mask_write_register(5, 0xF0F0, 0x0F0F))
+# print(
+#     "Read/Write Multiple Registers Result:",
+#     emulator.readwrite_registers(40, 2, 50, [111, 222]),
+# )

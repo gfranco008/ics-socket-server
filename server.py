@@ -1,6 +1,6 @@
 import socket
 
-from modbus import COMMANDS
+from modbus import COMMAND_DICT, COMMANDS
 
 # Create a socket object
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -38,15 +38,12 @@ try:
         if data.decode() not in COMMANDS:
             response = f"""Command was not valid!
             Use one of the following:
-            {*COMMANDS}"""
+            {COMMANDS}"""
             conn.sendall(response.encode())
 
         else:
-            response = 
-
-        # Get a response from the server user
-        response = input("Enter your response: ")
-        conn.sendall(response.encode())
+            response = COMMAND_DICT.get(data.decode())
+            conn.sendall(response.encode())
 
         # End the connection if the server sends 'exit'
         if response.lower() == "exit":
